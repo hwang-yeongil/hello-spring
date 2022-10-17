@@ -44,8 +44,6 @@ public class HelloController {
 
 		public void setName(String name) {
 			this.name = name;
-		}
-		
-		
+		} // 프로폴티 접근방식 
 	}
 }
