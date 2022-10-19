@@ -9,10 +9,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import hello.hellospring.domain.Member;
-import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 
 public class MemberServiceTest {
+	
 	MemberService memberService;
 	MemoryMemberRepository memberRepository;
 	
@@ -28,7 +28,7 @@ public class MemberServiceTest {
 	}
 	
 	@Test
-	public void 회원가입() throws Exception{
+	public void signin() throws Exception{
 		Member member = new Member();
 		member.setName("hello");
 		
@@ -39,11 +39,11 @@ public class MemberServiceTest {
 	}
 	
 	@Test
-	public void 중복_회원_예외() throws Exception{
+	public void signinException() throws Exception{
 		Member member1 = new Member();
-		Member member2 = new Member();
-		
 		member1.setName("spring");
+		
+		Member member2 = new Member();
 		member2.setName("spring");
 		
 		memberService.join(member1);

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
+
 
 public class MemberService {
 	
@@ -17,6 +17,7 @@ public class MemberService {
 	
 	public Long join(Member member) {
 		validateDuplicateMember(member);
+		memberRepository.save(member);
 		return member.getId();
 	}
 
