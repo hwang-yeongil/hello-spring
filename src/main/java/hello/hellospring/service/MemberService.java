@@ -29,7 +29,7 @@ public class MemberService {
 			});
 	}
 	
-	public List<Member> finMembers(){
+	public List<Member> findMembers(){
 		return memberRepository.findAll();
 	}
 	
