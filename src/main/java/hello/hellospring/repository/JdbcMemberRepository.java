@@ -17,7 +17,7 @@ import org.springframework.jdbc.datasource.DataSourceUtils;
 public class JdbcMemberRepository implements MemberRepository {
 	private final DataSource dataSource;
 	public JdbcMemberRepository(DataSource dataSource) {
-	this.dataSource = dataSource;
+		this.dataSource = dataSource;
 	}
 		@Override
 		public Member save(Member member) {
