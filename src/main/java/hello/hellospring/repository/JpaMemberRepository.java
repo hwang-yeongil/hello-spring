@@ -9,6 +9,8 @@ import hello.hellospring.domain.Member;
 
 public class JpaMemberRepository implements MemberRepository{
 	
+	
+
 	private final EntityManager em;
 	
 	public JpaMemberRepository(EntityManager em) {
@@ -43,7 +45,23 @@ public class JpaMemberRepository implements MemberRepository{
 				.getResultList();
 		return result.stream().findAny();
 	}
-	
+	@Override
+	public Optional<Member> findByUserid(String userid) {
+		// TODO Auto-generated method stub
+		List<Member> result = em.createQuery("select m from Member m where m.userid = :userid", Member.class)
+				.setParameter("userid", userid)
+				.getResultList();
+		return result.stream().findAny();
+	}
+
+	@Override
+	public Optional<Member> findByPassword(String password) {
+		// TODO Auto-generated method stub
+		List<Member> result = em.createQuery("select m from Member m where m.password = :password", Member.class)
+				.setParameter("password", password)
+				.getResultList();
+		return result.stream().findAny();
+	}
 	
 
 }

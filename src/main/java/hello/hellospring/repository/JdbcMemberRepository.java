@@ -21,7 +21,7 @@ public class JdbcMemberRepository implements MemberRepository {
 	}
 		@Override
 		public Member save(Member member) {
-			String sql = "insert into member(name) values(?)";
+			String sql = "insert into member values( seq_member,?)";
 			
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -31,6 +31,8 @@ public class JdbcMemberRepository implements MemberRepository {
 				conn = getConnection();
 				pstmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 				pstmt.setString(1, member.getName());
+				pstmt.setString(2, member.getUserid());
+				pstmt.setString(3, member.getPassword());
 				pstmt.executeUpdate();
 				rs = pstmt.getGeneratedKeys();
 				if (rs.next()) {
@@ -44,6 +46,16 @@ public class JdbcMemberRepository implements MemberRepository {
 			} finally {
 				close(conn, pstmt, rs);
 			}
+		}
+		@Override
+		public Optional<Member> findByUserid(String userid) {
+			// TODO Auto-generated method stub
+			return Optional.empty();
+		}
+		@Override
+		public Optional<Member> findByPassword(String password) {
+			// TODO Auto-generated method stub
+			return Optional.empty();
 		}
 		@Override
 		public Optional<Member> findById(Long id) {

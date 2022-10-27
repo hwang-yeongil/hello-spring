@@ -29,6 +29,8 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
 		jdbcInsert.withTableName("member").usingGeneratedKeyColumns("id");
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("name", member.getName());
+		parameters.put("userid", member.getUserid());
+		parameters.put("password", member.getPassword());
 		
 		Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
 		member.setId(key.longValue());
@@ -63,6 +65,20 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
 			member.setName(rs.getString("name"));
 			return member;
 		};
+	}
+
+	@Override
+	public Optional<Member> findByUserid(String userid) {
+		// TODO Auto-generated method stub
+		List<Member> result = jdbcTemplate.query("select * from member where userid = ?", memberRowMapper(), userid);
+		return result.stream().findAny();
+	}
+
+	@Override
+	public Optional<Member> findByPassword(String password) {
+		// TODO Auto-generated method stub
+		List<Member> result = jdbcTemplate.query("select * from member where password = ?", memberRowMapper(), password);
+		return result.stream().findAny();
 	}
 	
 	

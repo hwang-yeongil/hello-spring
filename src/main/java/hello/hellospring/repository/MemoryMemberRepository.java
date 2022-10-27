@@ -22,6 +22,22 @@ public class MemoryMemberRepository implements MemberRepository{
 	}
 
 	@Override
+	public Optional<Member> findByUserid(String userid) {
+		// TODO Auto-generated method stub
+		return store.values().stream()
+				.filter(member -> member.getUserid().equals(userid))
+				.findAny();
+	}
+
+	@Override
+	public Optional<Member> findByPassword(String password) {
+		// TODO Auto-generated method stub
+		return store.values().stream()
+				.filter(member -> member.getPassword().equals(password))
+				.findAny();
+	}
+
+	@Override
 	public Optional<Member> findById(Long id) {
 		// TODO Auto-generated method stub
 		return Optional.ofNullable(store.get(id));

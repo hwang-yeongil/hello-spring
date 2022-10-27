@@ -31,6 +31,8 @@ public class MemberServiceTest {
 	public void signin() throws Exception{
 		Member member = new Member();
 		member.setName("hello");
+		member.setUserid("hello");
+		member.setPassword("1234");
 		
 		Long saveId = memberService.join(member);
 		
@@ -42,9 +44,13 @@ public class MemberServiceTest {
 	public void signinException() throws Exception{
 		Member member1 = new Member();
 		member1.setName("spring");
+		member1.setUserid("spring");
+		member1.setPassword("1234");
 		
 		Member member2 = new Member();
 		member2.setName("spring");
+		member2.setUserid("spring");
+		member2.setPassword("1234");
 		
 		memberService.join(member1);
 		
