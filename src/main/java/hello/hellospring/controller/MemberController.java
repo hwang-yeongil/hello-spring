@@ -10,42 +10,46 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
+import lombok.AllArgsConstructor;
 
 @Controller
+@AllArgsConstructor
 public class MemberController {
 	private final MemberService memberService;
 	
-	@Autowired
-	public MemberController(MemberService memberService) {
-		this.memberService = memberService;
-	}
+//	@Autowired
+//	public MemberController(MemberService memberService) {
+//		this.memberService = memberService;
+//	}
 	
-	@GetMapping(value = "/members/new")
-	public String createForm() {
+	@GetMapping("/members/new")
+	public String createForm(Model model) {
+		model.addAttribute("member",new MemberForm());
 		return "members/createMemberForm";
 	}
 	
-	@PostMapping(value ="/members/new")
+	@PostMapping("/members/new")
 	public String create(MemberForm form) {
-		Member member = new Member();
-		member.setName(form.getName());
-		member.setUserid(form.getUserid());
-		member.setPassword(form.getPassword());
-		member.setRole("USERS");
-		
-		memberService.join(member);
-		
+		memberService.signUp(form);
+//		Member member = new Member();
+//		member.setName(form.getName());
+//		member.setUserid(form.getUserid());
+//		member.setPassword(form.getPassword());
+//		member.setRole("USERS");
+//		
+//		memberService.join(member);
+//		
 		return "redirect:/";
 	}
 	
-	@GetMapping(value = "/members")
+	@PostMapping("/members/login")
 	public String list(Model model) {
 		List<Member> members = memberService.findMembers();
 		model.addAttribute("members", members);
 		return "members/memberList";
 	}
-	@GetMapping(value = "/mem")
-	public String aaa() {
-		return "mem";
-	}
+//	@GetMapping(value = "/mem")
+//	public String aaa() {
+//		return "mem";
+//	}
 }

@@ -8,6 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access=AccessLevel.PROTECTED)
+@Getter
 @Entity
 @SequenceGenerator(
 		name="seq_member_gen",
@@ -57,5 +64,14 @@ public class Member {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	
+	@Builder
+	public Member(Long id, String name, String userid, String password, String role) {
+		this.id = id;
+		this.name = name;
+		this.userid = userid;
+		this.password = password;
+		this.role = role;
 		
+	}
 }

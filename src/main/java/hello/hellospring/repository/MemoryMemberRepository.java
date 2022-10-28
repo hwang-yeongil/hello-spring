@@ -29,42 +29,42 @@ public class MemoryMemberRepository implements MemberRepository{
 				.findAny();
 	}
 
-	@Override
-	public Optional<Member> findByPassword(String password) {
-		// TODO Auto-generated method stub
-		return store.values().stream()
-				.filter(member -> member.getPassword().equals(password))
-				.findAny();
-	}
-
-	@Override
-	public Optional<Member> findById(Long id) {
-		// TODO Auto-generated method stub
-		return Optional.ofNullable(store.get(id));
-	}
-
-	@Override
-	public Optional<Member> findByName(String name) {
-		// TODO Auto-generated method stub
-		return store.values().stream()
-			.filter(member -> member.getName().equals(name))
-			.findAny();
-	}
-
-	@Override
-	public Optional<Member> findByRole(String role) {
-		// TODO Auto-generated method stub
-		return store.values().stream()
-				.filter(member -> member.getRole().equals(role))
-				.findAny();
-	}
-
+//	@Override
+//	public Optional<Member> findByPassword(String password) {
+//		// TODO Auto-generated method stub
+//		return store.values().stream()
+//				.filter(member -> member.getPassword().equals(password))
+//				.findAny();
+//	}
+//
+//	@Override
+//	public Optional<Member> findById(Long id) {
+//		// TODO Auto-generated method stub
+//		return Optional.ofNullable(store.get(id));
+//	}
+//
+//	@Override
+//	public Optional<Member> findByName(String name) {
+//		// TODO Auto-generated method stub
+//		return store.values().stream()
+//			.filter(member -> member.getName().equals(name))
+//			.findAny();
+//	}
+//
+//	@Override
+//	public Optional<Member> findByRole(String role) {
+//		// TODO Auto-generated method stub
+//		return store.values().stream()
+//				.filter(member -> member.getRole().equals(role))
+//				.findAny();
+//	}
+//
 	@Override
 	public List<Member> findAll() {
 		// TODO Auto-generated method stub
 		return new ArrayList<>(store.values());
 	}
-	
+//	
 	public void clearStore() {
 		store.clear();
 	}
