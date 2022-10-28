@@ -80,6 +80,11 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
 		List<Member> result = jdbcTemplate.query("select * from member where password = ?", memberRowMapper(), password);
 		return result.stream().findAny();
 	}
-	
+	@Override
+	public Optional<Member> findByRole(String role) {
+		// TODO Auto-generated method stub
+		List<Member> result = jdbcTemplate.query("select * from member where role = ?", memberRowMapper(), role);
+		return result.stream().findAny();
+	}
 	
 }

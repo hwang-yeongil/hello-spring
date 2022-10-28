@@ -52,6 +52,14 @@ public class MemoryMemberRepository implements MemberRepository{
 	}
 
 	@Override
+	public Optional<Member> findByRole(String role) {
+		// TODO Auto-generated method stub
+		return store.values().stream()
+				.filter(member -> member.getRole().equals(role))
+				.findAny();
+	}
+
+	@Override
 	public List<Member> findAll() {
 		// TODO Auto-generated method stub
 		return new ArrayList<>(store.values());

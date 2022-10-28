@@ -24,8 +24,15 @@ public class Member {
 	private String name;
 	private String userid;
 	private String password;
+	private String role;
 	
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public Long getId() {
 		return id;
 	}

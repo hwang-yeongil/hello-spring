@@ -8,8 +8,6 @@ import javax.persistence.EntityManager;
 import hello.hellospring.domain.Member;
 
 public class JpaMemberRepository implements MemberRepository{
-	
-	
 
 	private final EntityManager em;
 	
@@ -63,5 +61,13 @@ public class JpaMemberRepository implements MemberRepository{
 		return result.stream().findAny();
 	}
 	
+	@Override
+	public Optional<Member> findByRole(String role) {
+		// TODO Auto-generated method stub
+		List<Member> result = em.createQuery("select m from Member m where m.role = :role", Member.class)
+				.setParameter("role", role)
+				.getResultList();
+		return result.stream().findAny();
+	}
 
 }

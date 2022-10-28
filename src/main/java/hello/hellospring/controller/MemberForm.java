@@ -6,6 +6,7 @@ public class MemberForm {
 	private String name;
 	private String userid;
 	private String password;
+	private String role;
 	
 	public String getName() {
 		return name;
@@ -30,5 +31,14 @@ public class MemberForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 	
 }

@@ -29,6 +29,9 @@ public class MemberController {
 	public String create(MemberForm form) {
 		Member member = new Member();
 		member.setName(form.getName());
+		member.setUserid(form.getUserid());
+		member.setPassword(form.getPassword());
+		member.setRole("USERS");
 		
 		memberService.join(member);
 		

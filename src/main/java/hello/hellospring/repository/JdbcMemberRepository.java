@@ -48,6 +48,11 @@ public class JdbcMemberRepository implements MemberRepository {
 			}
 		}
 		@Override
+		public Optional<Member> findByRole(String role) {
+			// TODO Auto-generated method stub
+			return Optional.empty();
+		}
+		@Override
 		public Optional<Member> findByUserid(String userid) {
 			// TODO Auto-generated method stub
 			return Optional.empty();
